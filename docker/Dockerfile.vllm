@@ -1,0 +1,50 @@
+# Dockerfile for vLLM Server with LoRA Support
+# Requires NVIDIA GPU with CUDA support
+
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+ENV CUDA_HOME=/usr/local/cuda
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.11 \
+    python3-pip \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+RUN pip3 install --no-cache-dir --upgrade pip setuptools wheel
+
+# Install vLLM and dependencies
+RUN pip3 install --no-cache-dir \
+    vllm>=0.2.7 \
+    transformers>=4.36.0 \
+    torch>=2.1.0
+
+# Copy LoRA adapter
+COPY nl2sql-json-v2-adapter-manual /app/nl2sql-json-v2-adapter-manual
+
+# Expose vLLM API port
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
+    CMD curl -f http://localhost:8080/health || exit 1
+
+# Start vLLM server with LoRA
+CMD ["python3", "-m", "vllm.entrypoints.openai.api_server", \
+    "--model", "mistralai/Mistral-7B-Instruct-v0.3", \
+    "--enable-lora", \
+    "--lora-modules", "nl2sql=/app/nl2sql-json-v2-adapter-manual", \
+    "--host", "0.0.0.0", \
+    "--port", "8080", \
+    "--dtype", "auto", \
+    "--max-model-len", "4096", \
+    "--gpu-memory-utilization", "0.9", \
+    "--trust-remote-code"]

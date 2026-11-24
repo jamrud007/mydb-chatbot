@@ -1,0 +1,11 @@
+{
+  "_comment": "Admin credentials stored LOCALLY - not connected to Oracle/MySQL.",
+  "_note": "Copy this file to admin_users.json and replace hashed_password with your own bcrypt hash. Generate one with: python -c \"import bcrypt; print(bcrypt.hashpw(b'yourpassword', bcrypt.gensalt()).decode())\"",
+  "admins": [
+    {
+      "username": "admin",
+      "email": "admin@local",
+      "hashed_password": "$2b$12$REPLACE.WITH.YOUR.OWN.BCRYPT.HASH.GENERATED.LOCALLY"
+    }
+  ]
+}

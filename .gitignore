@@ -1,0 +1,124 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+.eggs/
+*.egg
+dist/
+build/
+
+# Environment Variables - NEVER COMMIT!
+REMOTE_ACCESS_CREDENTIALS.txt
+*CREDENTIALS*.txt
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+.env.dev
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+chatbot.log
+
+# Cache
+cache/
+*.cache
+.cache/
+__pycache__/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Temporary files
+temp.xlsx
+*.xlsx
+*.csv
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Windows / OS
+*.exe
+*.dll
+*.manifest
+*.spec
+*.lnk
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Node modules (if any)
+node_modules/
+
+# Backup files
+*.bak
+*.backup
+backup_*.sql
+
+# Tasks
+daily_tasks.md
+
+# Worklogs - internal/personal only, not for the public repo
+docs/WORKLOG_*.md
+
+# Large model artifacts / vendored adapters - never commit
+*.gguf
+nl2sql-*-adapter-manual/
+nl2sql-*_test_results.json
+
+# Runtime data (cache DBs, generated reports)
+data/
+
+# Local tool/agent configs
+.claude/
+.agent/
+
+# vLLM local env files (see *.example for templates)
+.env.vllm
+docker/.env.docker.vllm
+
+# Admin credentials (see config/admin_users.json.example)
+config/admin_users.json
+
+# Internal-only documents (proposals, slide decks)
+docs/*.docx
+docs/*.pptx
+
+# Local test & utility scripts
+test_connection.py
+scripts/reset_password.py
+scripts/setup_remote_access.py
+scripts/check_oracle_users.py
+scripts/check_chatbot_users_oracle.py
+scripts/dump_oracle_schema.py
+scripts/setup_admin.py
+scripts/show_env.py
+

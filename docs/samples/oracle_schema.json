@@ -1,0 +1,2074 @@
+{
+  "database": "JOINGATEOCR",
+  "tables": [
+    {
+      "name": "DB_APP_SETTINGS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"DBAPPSETTINGS_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "NAME",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TITLE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "VALUE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TYPE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [],
+      "foreign_keys": []
+    },
+    {
+      "name": "DEVICEHISTORIES",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=JOINGATEOCR.DEVICES_HISTORY_SEQ.NEXTVAL"
+        },
+        {
+          "name": "DEVICEID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "STATUS",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "RESPONSERTIMEMS",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ResponseTimeMs",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": [
+        {
+          "column": "DEVICEID",
+          "references_table": "DEVICES",
+          "references_column": "ID"
+        }
+      ]
+    },
+    {
+      "name": "DEVICES",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=JOINGATEOCR.DEVICES_SEQ.NEXTVAL"
+        },
+        {
+          "name": "DEVICENAME",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "IP",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "STATUS",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "RESPONSETIMEMS",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "LOCATION",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "LOCATIONTYPE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "DeviceHistories",
+      "columns": [
+        {
+          "name": "Id",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"DEVICES_HISTORY_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "DeviceId",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "Status",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ResponseTimeMs",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "Id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "DeviceId",
+          "references_table": "Devices",
+          "references_column": "Id"
+        }
+      ]
+    },
+    {
+      "name": "Devices",
+      "columns": [
+        {
+          "name": "Id",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"DEVICES_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "DeviceName",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "Ip",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "Status",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ResponseTimeMs",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "Location",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "LocationType",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "Id"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "EFMIGRATIONSHISTORY",
+      "columns": [
+        {
+          "name": "MIGRATIONID",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "PRODUCTVERSION",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "MIGRATIONID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "ETICKETS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"ETICKET_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "CONTAINER_ID",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_SIZE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_TYPE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "VALID_THROUGH",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ETICKET_ID",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TERMINAL_ID",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "SHIP_ID",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "PROFORMA_NUMBER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "COMPANY_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "VESSEL_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "VOYAGE_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "VESSEL_VOYAGE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DOC_WEIGHT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "EXPORT_OR_IMPORT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "FULL_OR_EMPTY",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "FIXED_FLAT_RACK_BUNDLE",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"FIXED_FLAT_RACK_BUNDLE_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "NO",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "FIXED_OCR_DATA_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": [
+        {
+          "column": "FIXED_OCR_DATA_ID",
+          "references_table": "FIXED_OCR_DATAS",
+          "references_column": "ID"
+        }
+      ]
+    },
+    {
+      "name": "FIXED_OCR_DATAS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"FIXED_OCR_DATAS_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "GATE_WEIGHT",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_AXLE_COUNT",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CHASSIS_LENGTH",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "SEAL_PRESENT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "SEAL_PRESENT_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DG_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DG_CODE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "AUTO_GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "USERNAME",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "NOTE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": "default=0"
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT2",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": "default=0"
+        },
+        {
+          "name": "DAMAGE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DAMAGE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "EQ_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "EQ_CODE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "SP_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "SP_CODE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": [
+        {
+          "column": "GATE_TRANSACTION_ID",
+          "references_table": "GATE_TRANSACTIONS",
+          "references_column": "ID"
+        }
+      ]
+    },
+    {
+      "name": "FLAT_RACK_BUNDLE",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"FLATRACKBUNDLE_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "NO",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "OCR_DATA_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [],
+      "foreign_keys": []
+    },
+    {
+      "name": "FLAT_RACK_BUNDLE_ASSOC",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"FLATRACKTROCRDATA_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "NO",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_OCR_DATA_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_OCR_DATA",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "GATES",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"GATES_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "GATE_NAME",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TYPE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ACTIVE",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "GATE_ACTION_TIMES",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"GATE_ACTION_TIME_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "ACTION",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME",
+          "type": "TIMESTAMP(7)",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "GATE_DEVICES",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"GATEDEVICES_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "GATE_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "DEVICE_NAME",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "IP",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONF_FACTOR_LEVEL",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ACTIVE",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0\n   "
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "GATE_MESSAGE_INFOS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"GATE_MESSAGE_INFO_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "MESSAGE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME",
+          "type": "TIMESTAMP(7)",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "GATE_TRANSACTIONS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"GATE_TRANSACTIONS_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "STATUS",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "AUTO_GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_NAME",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CARD_ID",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TAG_NUMBER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "PLATE_NUMBER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_WEIGHT",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_OCR_DATA_ID",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "PAYMENT_INFO_ID",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "AUTOGATE_STATUS",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "OCR_AUTOGATE_ACCURACY",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"OCR_AUTOGATE_ACCURACY_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "AUTO_GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "AXLE_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "STID_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "PLATNO_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ISOCODE_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "SEAL_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "DGCODE_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "FLEXI_TANK_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CHASSIS_LENGTH_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "CHASSIS_TYPE_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "CONTAINER_POS_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "DAMAGE_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "DOOR_DIR_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "EMPTY_CHASSIS_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "MGW_ACC",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "NOTE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "USERNAME",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": [
+        {
+          "column": "GATE_TRANSACTION",
+          "references_table": "GATE_TRANSACTIONS",
+          "references_column": "ID"
+        }
+      ]
+    },
+    {
+      "name": "OCR_DATAS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"OCRDATAS_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "OCR_GATE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "OCR_DEVICE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "IMAGE_PATH",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TAG_NUMBER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "AXLE_COUNT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CHASSIS_LENGTH",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_2_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE_2_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT_2",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "SEAL_PRESENT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "SEAL_PRESENT_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DG_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DG_CODE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "START_TIME",
+          "type": "TIMESTAMP(7)",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "END_TIME",
+          "type": "TIMESTAMP(7)",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ADD_FIELDS_JSON",
+          "type": "CLOB",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "IMAGE_RAW_PATH",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "PLAT_NO",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DOOR_DIRECTION",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DOOR_DIRECTION_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CHASSIS_TYPE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "FLEXI_TANK",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "FLEXI_TANK_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DAMAGE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DAMAGE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "OCR_IMAGES",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"OCR_IMAGE_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "DEVICE_NAME",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "IMAGE_PATH",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "IMAGE_RAW_PATH",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "OCR_DATA_ID",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": [
+        {
+          "column": "GATE_TRANSACTION_ID",
+          "references_table": "GATE_TRANSACTIONS",
+          "references_column": "ID"
+        }
+      ]
+    },
+    {
+      "name": "PAYMENT_INFOS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"PAYMENTINFO_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "PAYMENT_DEDUCT_STATUS",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "PAYMENT_DEDUCT_VALUE",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "PAYMENT_BANK_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "PAYMENT_BALANCE",
+          "type": "NUMBER",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "GATE_TRANSACTION",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0"
+        },
+        {
+          "name": "GATE_TRANSACTION_ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=0\n   "
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": [
+        {
+          "column": "GATE_TRANSACTION_ID",
+          "references_table": "GATE_TRANSACTIONS",
+          "references_column": "ID"
+        },
+        {
+          "column": "GATE_TRANSACTION",
+          "references_table": "GATE_TRANSACTIONS",
+          "references_column": "ID"
+        }
+      ]
+    },
+    {
+      "name": "TRANSACTION_OCR_DATAS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"TRANSACTIONOCR_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "OCR_GATE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "OCR_DEVICE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "IMAGE_PATH",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "IMAGE_RAW_PATH",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TAG_NUMBER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "PLAT_NO",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "AXLE_COUNT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CHASSIS_LENGTH",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CHASSIS_TYPE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER2_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_CODE2_CONF_LEVEL",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "MAX_GROSS_WEIGHT2",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "SEAL_PRESENT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "SEAL_PRESENT2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DG_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DG_CODE2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DOOR_DIRECTION",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DOOR_DIRECTION2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "START_TIME",
+          "type": "TIMESTAMP(7)",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "END_TIME",
+          "type": "TIMESTAMP(7)",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ADD_FIELDS_JSON",
+          "type": "CLOB",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_TAG_NUMBER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_PLAT_NO",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_AXLE_COUNT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_CONTAINER",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_CONTAINER2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_ISO_CODE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_ISO_CODE2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_MAX_GROSS_WEIGHT",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TRANSACTION_MAX_GROSS_WEIGHT2",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_FRONT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_LEFT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_REAR",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_Right",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "CONTAINER_TOP",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "FLEXI_TANK",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "FLEXI_TANK_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_FRONT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_LEFT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_REAR",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_RIGHT",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ISO_TOP",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DAMAGE",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "DAMAGE_2",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "USERS",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": "default=\"JOINGATEOCR\".\"USER_SEQ\".\"NEXTVAL\""
+        },
+        {
+          "name": "USERNAME",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "PASSWORD",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "FULLNAME",
+          "type": "NVARCHAR2",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "ROLE",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ACTIVE",
+          "type": "NUMBER",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "TIME_CREATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_DELETED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        },
+        {
+          "name": "TIME_UPDATED",
+          "type": "TIMESTAMP(7) WITH TIME ZONE",
+          "nullable": true,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "ID"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "name": "__EFMigrationsHistory",
+      "columns": [
+        {
+          "name": "MigrationId",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        },
+        {
+          "name": "ProductVersion",
+          "type": "NVARCHAR2",
+          "nullable": false,
+          "comment": ""
+        }
+      ],
+      "primary_keys": [
+        "MigrationId"
+      ],
+      "foreign_keys": []
+    }
+  ],
+  "extracted_at": "2026-06-03T10:41:13.096669"
+}

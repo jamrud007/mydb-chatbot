@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Schema Documentation</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            background: #ecf0f1;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        code {
+            background: #e8f4f8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .meta {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .toc {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .toc li {
+            padding: 5px 0;
+        }
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .badge.primary {
+            background: #e74c3c;
+            color: white;
+        }
+        .badge.foreign {
+            background: #f39c12;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 Database Schema Documentation</h1>
+    <p class="meta">Generated: 2026-01-30 17:18:54</p>
+    <p class="meta">Total Tables: 14</p>
+    
+    <div class="toc">
+        <h2>📑 Table of Contents</h2>
+        <ul>
+            <li><a href="#customers">customers</a></li>
+            <li><a href="#geolocation">geolocation</a></li>
+            <li><a href="#leads_closed">leads_closed</a></li>
+            <li><a href="#leads_qualified">leads_qualified</a></li>
+            <li><a href="#order_items">order_items</a></li>
+            <li><a href="#order_payments">order_payments</a></li>
+            <li><a href="#order_reviews">order_reviews</a></li>
+            <li><a href="#order_summary">order_summary</a></li>
+            <li><a href="#orders">orders</a></li>
+            <li><a href="#product_category_name_translation">product_category_name_translation</a></li>
+            <li><a href="#product_performance">product_performance</a></li>
+            <li><a href="#products">products</a></li>
+            <li><a href="#sellers">sellers</a></li>
+            <li><a href="#users">users</a></li>
+        </ul>
+    </div>
+
+    <h2 id="customers">🗂️ customers</h2>
+    <p><strong>Total Columns:</strong> 5</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>customer_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>customer_unique_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>customer_zip_code_prefix</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>customer_city</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>customer_state</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="geolocation">🗂️ geolocation</h2>
+    <p><strong>Total Columns:</strong> 6</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>geolocation_id</code></td>
+                <td>int</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>geolocation_zip_code_prefix</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>geolocation_lat</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>geolocation_lng</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>geolocation_city</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>geolocation_state</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="leads_closed">🗂️ leads_closed</h2>
+    <p><strong>Total Columns:</strong> 14</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>mql_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>seller_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>sdr_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>sr_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>won_date</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>business_segment</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>lead_type</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>lead_behaviour_profile</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>has_company</code></td>
+                <td>tinyint</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>has_gtin</code></td>
+                <td>tinyint</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>average_stock</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>business_type</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>declared_product_catalog_size</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>declared_monthly_revenue</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="leads_qualified">🗂️ leads_qualified</h2>
+    <p><strong>Total Columns:</strong> 4</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>mql_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>first_contact_date</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>landing_page_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>origin</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="order_items">🗂️ order_items</h2>
+    <p><strong>Total Columns:</strong> 7</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>order_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_item_id</code></td>
+                <td>int</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>seller_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>shipping_limit_date</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>price</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>freight_value</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="order_payments">🗂️ order_payments</h2>
+    <p><strong>Total Columns:</strong> 5</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>order_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>payment_sequential</code></td>
+                <td>int</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>payment_type</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>payment_installments</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>payment_value</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="order_reviews">🗂️ order_reviews</h2>
+    <p><strong>Total Columns:</strong> 7</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>review_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>review_score</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>review_comment_title</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>review_comment_message</code></td>
+                <td>text</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>review_creation_date</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>review_answer_timestamp</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="order_summary">🗂️ order_summary</h2>
+    <p><strong>Total Columns:</strong> 7</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>order_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>customer_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_status</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_purchase_timestamp</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>total_items</code></td>
+                <td>bigint</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>total_value</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>avg_review_score</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="orders">🗂️ orders</h2>
+    <p><strong>Total Columns:</strong> 8</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>order_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>customer_id</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_status</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_purchase_timestamp</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_approved_at</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_delivered_carrier_date</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_delivered_customer_date</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>order_estimated_delivery_date</code></td>
+                <td>datetime</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="product_category_name_translation">🗂️ product_category_name_translation</h2>
+    <p><strong>Total Columns:</strong> 2</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>product_category_name</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_category_name_english</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="product_performance">🗂️ product_performance</h2>
+    <p><strong>Total Columns:</strong> 6</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>product_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_category_name</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_category_name_english</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>total_orders</code></td>
+                <td>bigint</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>total_revenue</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>avg_price</code></td>
+                <td>decimal</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="products">🗂️ products</h2>
+    <p><strong>Total Columns:</strong> 9</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>product_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_category_name</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_name_length</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_description_length</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_photos_qty</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_weight_g</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_length_cm</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_height_cm</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>product_width_cm</code></td>
+                <td>int</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="sellers">🗂️ sellers</h2>
+    <p><strong>Total Columns:</strong> 4</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>seller_id</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>seller_zip_code_prefix</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>seller_city</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>seller_state</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="users">🗂️ users</h2>
+    <p><strong>Total Columns:</strong> 9</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Type</th>
+                <th>Nullable</th>
+                <th>Key</th>
+                <th>Default</th>
+                <th>Extra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>id</code></td>
+                <td>int</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>username</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>email</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>hashed_password</code></td>
+                <td>varchar</td>
+                <td>✗</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>created_at</code></td>
+                <td>timestamp</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>last_login</code></td>
+                <td>timestamp</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>is_active</code></td>
+                <td>tinyint</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>is_verified</code></td>
+                <td>tinyint</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><code>verification_code</code></td>
+                <td>varchar</td>
+                <td>✓</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

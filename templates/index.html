@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Chatbot - E-commerce Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <span class="icon">🤖</span>
+                    MySQL Chatbot
+                </h1>
+                <p class="subtitle">Ask questions about the e-commerce database in natural language</p>
+            </div>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chat Container -->
+            <div class="chat-container" id="chatContainer">
+                <!-- Welcome Message -->
+                <div class="message bot-message welcome-message">
+                    <div class="message-content">
+                        <strong>👋 Selamat datang!</strong>
+                        <p>Saya adalah chatbot MySQL yang bisa membantu Anda menganalisis database e-commerce Olist.</p>
+                        <p><strong>Contoh pertanyaan:</strong></p>
+                        <ul>
+                            <li>"Berapa total pesanan yang sudah delivered?"</li>
+                            <li>"Siapa 5 customer yang paling banyak belanja?"</li>
+                            <li>"Produk kategori apa yang paling populer?"</li>
+                            <li>"Tampilkan rata-rata rating review per bulan"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Container -->
+            <div class="input-container">
+                <form id="chatForm">
+                    <div class="input-wrapper">
+                        <textarea id="messageInput" placeholder="Ketik pertanyaan Anda di sini..." rows="1"
+                            required></textarea>
+                        <button type="submit" id="sendButton" class="send-button">
+                            <span class="send-icon">🚀</span>
+                            <span class="send-text">Send</span>
+                        </button>
+                    </div>
+                </form>
+                <div class="input-hint">
+                    Press Enter to send, Shift+Enter for new line
+                </div>
+            </div>
+        </div>
+
+        <!-- Schema Sidebar (Optional, can be toggled) -->
+        <div class="schema-toggle" id="schemaToggle">
+            <button class="toggle-button">📊 View Schema</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}?v=8"></script>
+</body>
+
+</html>

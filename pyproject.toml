@@ -1,0 +1,25 @@
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+extend-exclude = ["venv", "backups", "development", "scripts", "nl2sql-json-v2-adapter-manual"]
+
+[tool.ruff.lint]
+# E/W: pycodestyle errors/warnings, F: pyflakes, I: isort
+select = ["E", "F", "W", "I"]
+# E501: line too long (handled by formatter)
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "core", "database", "llm", "chatbot", "cache", "utils", "api", "models", "exceptions", "services"]
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+exclude = '''
+/(
+    venv
+  | backups
+  | development
+  | \.git
+)/
+'''

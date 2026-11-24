@@ -1,0 +1,45 @@
+# Backend API
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+email-validator>=2.1.0.post1
+
+# Database
+mysql-connector-python==8.2.0
+oracledb==2.2.1
+
+# LLM
+google-generativeai==0.3.2
+openai==1.12.0
+
+# Streamlit Dashboard
+streamlit==1.30.0
+plotly==5.18.0
+httpx==0.26.0
+kaleido==0.2.1
+openpyxl==3.1.2
+
+# Utils
+python-dotenv==1.0.0
+cachetools==5.3.2
+markdown==3.5.1
+requests==2.31.0
+
+# Authentication & Security
+bcrypt>=4.0.0
+PyJWT>=2.8.0
+python-multipart>=0.0.6
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Development Tools (lint + format)
+ruff>=0.4.0
+black>=24.0.0
+
+# Query Cache (optional - for production)
+redis>=5.0.0  # Optional: For distributed caching in production
+
+# vLLM Support (for fine-tuned model deployment)
+# vllm>=0.2.7  # Optional: For LoRA model deployment with high performance
