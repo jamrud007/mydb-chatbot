@@ -1,9 +1,9 @@
-# 🚀 Analytics API Documentation
+# Analytics API Documentation
 
 Provides pre-processed data optimized for Chart.js visualization.
 **Base URL:** `/api/analytics`
 
-## 📊 Endpoints
+## Endpoints
 
 ### 1. Revenue by Category
 - **URL:** `/revenue-by-category`
@@ -43,7 +43,7 @@ Provides pre-processed data optimized for Chart.js visualization.
 - **Data:** Order counts by status
 - **Chart Type:** Pie Chart
 
-## 🛠️ Usage in Frontend
+## Frontend Integration
 
 ```javascript
 async function loadDashboard(endpoint) {

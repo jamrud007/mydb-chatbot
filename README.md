@@ -1,4 +1,4 @@
-# MyDB Chatbot 🤖
+# MyDB Chatbot
 
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
@@ -6,159 +6,140 @@
 [![Docker](https://img.shields.io/badge/Docker-ready-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-**MyDB Chatbot** is a powerful natural language interface for your databases (MySQL, Oracle, and more). It leverages advanced LLMs (Gemini, OpenAI, Ollama) to translate plain English/Indonesian questions into optimized SQL queries, visualize the results, and provide intelligent data analysis—all in real-time.
+An enterprise natural language interface for relational databases (MySQL, Oracle, and SQLite). The system translates conversational prompts in English and Indonesian into validated SQL queries, executes them with strict read-only safety guards, and returns structured data alongside interactive visualizations.
 
-## ✨ Key Features
+## Key Features
 
-- **🗣️ Natural Language to SQL**: Ask complex questions in plain language (multilingual support).
-- **📊 Intelligent Visualization**: Automatically selects and renders the best charts (Bar, Line, Pie, Scatter) for your data.
-- **⚡ Smart Caching**: Built-in SQLite/Redis caching for instant responses and API cost optimization.
-- **🛡️ Enterprise-Grade Security**: Read-only safeguards, SQL injection prevention, and strict query validation.
-- **🔌 Multi-LLM Support**: Seamlessly switch between Gemini 2.0 Flash, OpenAI GPT-4, DeepSeek, or local Ollama models.
-- **📝 Interactive Dashboard**: Built with Streamlit for a responsive, user-friendly data exploration experience.
+- **Natural Language to SQL**: Converts complex conversational questions into optimized SQL queries with schema introspection.
+- **Intelligent Visualization**: Automatically detects result distributions and renders Plotly charts (bar, line, pie, scatter).
+- **Multi-Tier Caching**: Built-in SQLite and Redis caching layers for query deduplication, latency reduction, and API cost control.
+- **Query Safety & Validation**: AST-level SQL validation blocking DDL/DML statements (`DROP`, `DELETE`, `UPDATE`, `INSERT`, `ALTER`) to guarantee read-only execution.
+- **Multi-LLM Provider Support**: Pluggable backend supporting local inference (vLLM, Ollama, quantized Mistral 7B GGUF) and cloud models (Gemini 2.0, OpenAI GPT-4).
+- **Asynchronous Processing**: Background task queue for heavy summarization workloads with polling status endpoints.
+- **Interactive UI**: Streamlit dashboard with session management, history export, and live query exploration.
 
-## 🚀 Quick Start
+## Architecture
+
+```mermaid
+graph LR
+    User[User] --> UI[Streamlit Frontend]
+    UI --> API[FastAPI Backend]
+    API --> Cache[(Redis / SQLite Cache)]
+    API --> LLM[LLM Engine: vLLM / Ollama / Cloud]
+    API --> Safety[AST SQL Validator]
+    Safety --> DB[(MySQL / Oracle Database)]
+```
+
+- **Frontend**: Streamlit interactive client.
+- **Backend**: FastAPI async REST server with JWT authentication and rate limiting.
+- **Execution & Validation**: AST validator and dialect-aware schema injector.
+- **LLM Layer**: Local models via vLLM/Ollama or cloud fallback via OpenAI/Gemini SDKs.
+
+## Technology Stack
+
+- **Backend**: Python 3.11, FastAPI, Pydantic v2, Uvicorn
+- **Frontend**: Streamlit, Plotly
+- **Database**: MySQL, Oracle DB, Redis, SQLite
+- **LLM Runtimes**: vLLM (LoRA support), Ollama, Google GenAI SDK, OpenAI SDK
+- **Testing & Quality**: Pytest, Pytest-Asyncio, Ruff, Black
+
+## Quick Start
 
 ### Prerequisites
 - Python 3.11+
 - MySQL Database (5.7 or 8.0+)
-- An LLM API Key (Google AI Studio or OpenAI) or a local Ollama instance.
+- Local Ollama runtime or an LLM API key (Google AI Studio / OpenAI)
 
 ### Installation
 
-1. **Clone the repository**
+1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/mysql-chatbot.git
-   cd mysql-chatbot
+   git clone https://github.com/jamrud007/mydb-chatbot.git
+   cd mydb-chatbot
    ```
 
-2. **Install dependencies**
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure Environment**
+3. Configure environment variables:
    ```bash
    cp .env.example .env
    ```
-   Edit `.env` and populate your database credentials and API keys:
-   ```env
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=yourpassword
-   DB_NAME=your_database
-   GEMINI_API_KEY=your_api_key
-   ```
+   Update `.env` with your database credentials and preferred AI provider.
 
-### Running the Application
+### Running the Services
 
-**Backend (FastAPI)**
+Start the backend API (FastAPI):
 ```bash
 python main.py
 ```
 
-**Frontend (Streamlit)**
+In a separate terminal, start the frontend dashboard (Streamlit):
 ```bash
 streamlit run streamlit_app.py
 ```
 
-Visit `http://localhost:8501` to start chatting with your data!
+Access the web interface at `http://localhost:8501` and interactive API docs at `http://localhost:8000/docs`.
 
-## ⚙️ Advanced Configuration (CPU & Universal DB)
+## Docker Deployment
 
-### 1. Universal Database Support 🌍
-This chatbot is **Database Agnostic**. It automatically reads your table schema dynamically. To switch databases:
-1. Update `.env`:
-   ```env
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=new_password
-   DB_NAME=your_new_database
-   ```
-2. Restart the backend: `python main.py`
-3. The "Diet Schema" prompt will auto-adapt to your new tables.
-
-### 2. CPU Optimization Flags ⚡
-For deployment on non-GPU environments (standard laptops/servers), use these settings in `.env` to prevent timeouts:
-
-- **`ENABLE_DATA_ANALYSIS=False`**: Disables the heavy "Data Analyst" summarization step. Chatbot returns SQL results instantly (0.5s) instead of waiting for narrative generation (10m+ on CPU).
-- **`OLLAMA_MODEL=mysql-nl2sql`**: Use our custom quantized GGUF model (Q4_K_M) with a 2048 context window for maximum speed.
-
-### 3. Local LLM (Ollama) Setup 🦙
-1. Install [Ollama](https://ollama.ai/).
-2. Create the custom efficient model:
-   ```bash
-   ollama create mysql-nl2sql -f Modelfile
-   ```
-3. Run the model:
-   ```bash
-   ollama serve
-   ```
-4. Set `.env` to `AI_PROVIDER=ollama`.
-
-## 🐳 Docker Support
-
-Deploy instantly with Docker Compose:
+To launch the complete multi-service stack (Backend, Frontend, Redis, MySQL):
 
 ```bash
 docker-compose up -d
 ```
-The application will be available at `http://localhost:8501`.
 
-## 🏗️ Architecture
+For GPU-accelerated vLLM deployment, refer to [docker/README_VLLM.md](docker/README_VLLM.md).
 
-```mermaid
-graph LR
-    User[User] --> UI[Streamlit UI]
-    UI --> Backend[FastAPI Server]
-    Backend --> Cache[(Redis/SQLite Cache)]
-    Backend --> LLM{LLM Provider}
-    Backend --> DB[(MySQL Database)]
+## Configuration & Local LLM
+
+### Database Connection
+The application introspects table schemas dynamically. Set your connection details in `.env`:
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=your_database
 ```
 
-- **Frontend**: Streamlit for rapid interactive UI development.
-- **Backend**: FastAPI for high-performance, async API handling.
-- **Intelligence**: LangChain/LLM integration for SQL synthesis and result analysis.
-- **Data Layer**: Direct MySQL integration with SQLAlchemy/Connector.
+### Local Inference via Ollama
+To run completely offline without external API dependencies:
+1. Install [Ollama](https://ollama.ai/).
+2. Pull or create your local model:
+   ```bash
+   ollama run mistral
+   ```
+3. Set `AI_PROVIDER=ollama` and `OLLAMA_MODEL=mistral` in `.env`.
 
-## 🛠️ Technology Stack
+### CPU Optimization
+For low-resource or CPU-only servers:
+- Set `ENABLE_DATA_ANALYSIS=False` to return SQL query results instantly (0.5s) without waiting for narrative text generation.
+- Use 4-bit quantized GGUF models (`Q4_K_M`) for local inference.
 
-- **Core**: Python 3.11
-- **Web**: FastAPI, Streamlit
-- **Database**: MySQL, Redis, SQLite
-- **AI/ML**: Google Gemini, OpenAI, Ollama
-- **Visualization**: Plotly Interactive Charts
+## Testing
 
-## 🔒 Security Features
-
-- **JWT Authentication**: Secure API access with bearer tokens.
-- **Input Sanitization**: Strict validation for SQL injection prevention.
-- **Least Privilege**: Database connection uses restricted permissions where possible.
-- **Encrypted Secrets**: Environment variables for sensitive keys.
-
-## 🧪 Testing
-
-Run the automated test suite to verify system integrity:
+Run the automated test suite with pytest:
 
 ```bash
 # Run all tests
 pytest
 
-# Run specific test modules
-pytest tests/test_utils.py
-pytest tests/test_mock_llm.py
+# Run specific modules
+pytest tests/test_api_endpoints.py
+pytest tests/test_sql_validator.py
+pytest tests/test_metrics.py
 ```
 
-## 🤝 Contributing
+## Security
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+- **AST Validation**: Queries are parsed into abstract syntax trees to enforce SELECT-only constraints.
+- **Authentication**: JWT token verification on all protected endpoints.
+- **Input Sanitization**: Parameterized queries and strict character filtration.
+- **Least Privilege**: Designed to operate with read-only database user grants.
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
